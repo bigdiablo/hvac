@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVAC</title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="https://kit.fontawesome.com/4c9962e02c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <button class="back">
+            <i class="fa-regular fa-arrow-left"></i>
+        </button>
+        <img src="https://placehold.co/130x60" alt="HVAC">
+        <button class="next">
+            <i class="fa-regular fa-arrow-right"></i>
+        </button>
+    </nav>
+    <form action="" method="POST">
+        <div class="question">
+            <h1>Where do you need service?</h1>
+            <h2>Let’s make sure we serve your area</h2>
+            <div class="wrap">
+                <input type="text" name="address" id="address" placeholder="4576 Clover Drive, CO, 80918">
+                <button class="address big" type="button">Get Started</button>
+            </div>
+            <span>Home prices in the United States are at all-time highs. It is uncertain as to whether this will last, but many homeowners are taking action now. With a cash-out refinance, homeowners are using this money to pay down debt, catch up on payments, finally take that much needed vacation, or complete a home improvement project. Many refinance programs still exist to help homeowners, regardless of credit history.</span>
+        </div>
+        <div class="question">
+            <h3>What’s the nature of your request?</h3>
+            <h4>Tell us what kind of help you need</h4>
+            <div class="wrap">
+                <label class="checkbox">Install/Replace
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox">Repair
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="question">
+            <h3>What type of system are we working with?</h3>
+            <h4>Select the equipment that needs attention</h4>
+            <div class="wrap">
+                <label class="checkbox">Central Heating / Furnace
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox">Boiler / Radiator
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox">Air Conditioner
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="question">
+            <h3>What powers your system?</h3>
+            <h4>Choose the fuel or energy source it runs on</h4>
+            <div class="wrap">
+                <button class="option" type="button">Natural Gas</button>
+                <button class="option active" type="button">Oil</button>
+                <button class="option" type="button">Propane Gas</button>
+                <button class="option" type="button">Electric</button>
+            </div>
+        </div>
+        <div class="question">
+            <h3>We have matching pros in your area!</h3>
+            <h4>Up to 4 local contractors will reach out with their best prices.</h4>
+            <div class="wrap">
+                <div class="field wrong">
+                    <i class="error">Please enter your first name</i>
+                    <input type="text" name="first" id="first" placeholder="First Name">
+                </div>
+                <div class="field">
+                    <i class="error">Please enter your last name</i>
+                    <input type="text" name="last" id="last" placeholder="Last Name">
+                </div>
+                <div class="field wrong">
+                    <i class="error">Please enter a valid mobile phone number</i>
+                    <input type="tel" name="phone" id="phone" placeholder="Mobile Phone">
+                </div>
+                <div class="field">
+                    <i class="error">Please enter a valid email address</i>
+                    <input type="email" name="email" id="email" placeholder="Email Address">
+                </div>
+                <button class="big">Send</button>
+            </div>
+        </div>
+    </form>
+    <footer>
+        <div class="logos">
+            <img src="https://placehold.co/120x50" alt="SecureRights">
+            <img src="https://placehold.co/60x50" alt="Equal Housing">
+        </div>
+        <ul>
+            <li>
+                <a href="">Unsubscribe</a>
+            </li>
+            <li>
+                <a href="">Contact Us</a>
+            </li>
+            <li>
+                <a href="">Lenders</a>
+            </li>
+            <li>
+                <a href="">Terms & Conditions</a>
+            </li>
+            <li>
+                <a href="">Privacy Policy</a>
+            </li>
+            <li>
+                <a href="">Licenses</a>
+            </li>
+            <li>
+                <a href="">California Privacy Notice</a>
+            </li>
+        </ul>
+        <p>SecureRights is an online news and information service providing editorial content and directory information about mortgages and loans. SecureRights is not a lender or mortgage broker and does not offer loans or mortgages directly or indirectly through representatives or agents. SecureRights does not provide an application for credit or a mortgage loan. SecureRights is not responsible for the accuracy of information or responsible for the accuracy of the rates, APR or loan information posted by brokers, lenders or advertisers. All trademarks and logos appearing on this site are the property of their respective owners. Their appearance on this site does not indicate or imply an endorsement of our product.</p>
+        <p>Terms and Conditions Apply</p>
+        <p>The actual interest rate, APR and payment you are offered may vary based on the specific terms of the loan selected, verification of information, your credit history, the location and type of property, and other factors as determined by Lenders. This offer may not be available in all states and is subject to change without notice. Payment does not include taxes and insurance premiums. Some state and county maximum loan amount restrictions may apply. Mortgage rates could change daily. Actual payments will vary based on your individual situation and current rates. Some restrictions may apply.</p>
+        <p>CashoutEquity is owned by LeadPoint, Inc. NMLS ID: 3175 NMLS License Access Page</p>
+        <p>Copyright © 2025 Cashout Equity. All rights reserved.</p>
+    </footer>
+</body>
+<script>
+    const steps = document.querySelectorAll('.question');
+    const stepsContainer = document.createElement('div');
+    const form = document.querySelector('form');
+
+    stepsContainer.classList.add('steps');
+    steps.forEach(step => stepsContainer.appendChild(step));
+    form.prepend(stepsContainer);
+
+    Object.assign(stepsContainer.style, {
+        display: 'flex',
+        transition: 'transform 0.5s ease',
+    });
+
+    steps.forEach(step => {
+        Object.assign(step.style, {
+            flex: '0 0 100%',
+            width: '100%'
+        });
+    });
+
+    let currentStep = 0;
+
+    function updateStep() {
+        stepsContainer.style.transform = `translateX(-${currentStep * 100}%)`;
+    }
+
+    document.querySelector('.next').addEventListener('click', () => {
+        if (currentStep < steps.length - 1) {
+            currentStep++;
+            updateStep();
+        }
+    });
+
+    document.querySelector('.back').addEventListener('click', () => {
+        if (currentStep > 0) {
+            currentStep--;
+            updateStep();
+        }
+    });
+
+    form.addEventListener('click', (e) => {
+        if (
+            e.target.classList.contains('address') ||
+            e.target.classList.contains('checkbox') ||
+            e.target.classList.contains('option')
+        ) {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                updateStep();
+            }
+        }
+    });
+</script>
+</html>
