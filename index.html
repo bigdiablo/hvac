@@ -139,7 +139,7 @@
 
     Object.assign(stepsContainer.style, {
         display: 'flex',
-        transition: 'transform 0.5s ease',
+        transition: 'transform 0.7s ease',
     });
 
     steps.forEach(step => {
@@ -180,6 +180,15 @@
                 updateStep();
             }
         }
+    });
+
+    const options = document.querySelectorAll('.wrap .option');
+
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            options.forEach(btn => btn.classList.remove('active'));
+            option.classList.add('active');
+        });
     });
 </script>
 </html>
