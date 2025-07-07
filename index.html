@@ -31,12 +31,12 @@
             <h3>What’s the nature of your request?</h3>
             <h4>Tell us what kind of help you need</h4>
             <div class="wrap">
-                <label class="checkbox">Install/Replace
-                    <input type="checkbox" checked>
+                <label class="radio">Install/Replace
+                    <input type="radio" name="service">
                     <span class="checkmark"></span>
                 </label>
-                <label class="checkbox">Repair
-                    <input type="checkbox">
+                <label class="radio">Repair
+                    <input type="radio" name="service">
                     <span class="checkmark"></span>
                 </label>
             </div>
@@ -45,16 +45,16 @@
             <h3>What type of system are we working with?</h3>
             <h4>Select the equipment that needs attention</h4>
             <div class="wrap">
-                <label class="checkbox">Central Heating / Furnace
-                    <input type="checkbox">
+                <label class="radio">Central Heating / Furnace
+                    <input type="radio" name="system">
                     <span class="checkmark"></span>
                 </label>
-                <label class="checkbox">Boiler / Radiator
-                    <input type="checkbox" checked>
+                <label class="radio">Boiler / Radiator
+                    <input type="radio" name="system">
                     <span class="checkmark"></span>
                 </label>
-                <label class="checkbox">Air Conditioner
-                    <input type="checkbox">
+                <label class="radio">Air Conditioner
+                    <input type="radio" name="system">
                     <span class="checkmark"></span>
                 </label>
             </div>
@@ -172,7 +172,7 @@
     form.addEventListener('click', (e) => {
         if (
             e.target.classList.contains('address') ||
-            e.target.classList.contains('checkbox') ||
+            e.target.classList.contains('radio') ||
             e.target.classList.contains('option')
         ) {
             if (currentStep < steps.length - 1) {

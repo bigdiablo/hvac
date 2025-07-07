@@ -179,7 +179,7 @@ form {
     text-transform: uppercase;
 }
 
-.checkbox {
+.radio {
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
@@ -201,11 +201,11 @@ form {
     transition: border-color .3s ease;
 }
 
-.checkbox:has(input:checked) {
+.radio:has(input:checked) {
     border-color: #000;
 }
 
-.checkbox input {
+.radio input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -213,30 +213,31 @@ form {
     width: 0;
 }
 
-.checkbox .checkmark {
+.radio .checkmark {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 25px;
     width: 25px;
+    z-index: -1;
     border-radius: 4px;
     background-color: #eee;
     transition: all .3s ease;
 }
 
-.checkbox:hover input ~ .checkmark {
+.radio:hover input ~ .checkmark {
     background-color: #ccc;
 }
 
-.checkbox input:checked ~ .checkmark {
+.radio input:checked ~ .checkmark {
     background-color: #000;
 }
 
-.checkbox input:checked ~ .checkmark:after {
+.radio input:checked ~ .checkmark:after {
     opacity: 1;
 }
 
-.checkbox .checkmark:after {
+.radio .checkmark:after {
     font-family: "Font Awesome 6 Pro";
     content: "\f00c";
     color: #fff;
