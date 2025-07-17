@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVAC</title>
+    <link rel="stylesheet" href="current.css">
+
+</head>
+
+<form action="" id="form" method="POST">
+    <nav>
+        <button type="button" class="back" id="back">
+            <i class="fa-regular fa-arrow-left"></i>
+        </button>
+        <img src="https://storage.googleapis.com/msgsndr/HbT9QzvINE7yMBfb4wrP/media/686c2b0fff703f575ad999ca.png" height="70" alt="HVAC">
+        <button type="button" class="next" id="next">
+            <i class="fa-regular fa-arrow-right"></i>
+        </button>
+    </nav>
+    <input name="confirmation" id="confirmation" type="hidden">
+    <input name="LeadID" id="LeadID" type="hidden">
+    <input id="SR_TOKEN" type="hidden" value="" name="SR_TOKEN">
+    <input id="xxTrustedFormCertUrl" value="" type="hidden" name="xxTrustedFormCertUrl">
+    <input id="leadid_token" type="hidden" value="" name="universal_leadid">
+    <input name="SourceID" type="hidden" value="" />
+    <input id="DataSource" name="DataSource" type="hidden" value="" />
+    <div class="steps">
+        <div class="question">
+            <h1>Where do you need service?</h1>
+            <h2>Let’s make sure we serve your area</h2>
+            <div class="wrap">
+                <input type="text" name="address" id="address" placeholder="4576 Clover Drive, CO, 80918">
+                <input type="hidden" id="zip">
+                <input type="hidden" id="state">
+                <input type="hidden" id="city">
+                <input type="hidden" id="street">
+                <input type="hidden" id="country">
+                <button class="address big" type="button">Get Started</button>
+            </div>
+            <span class="disclosure">By clicking Get My Quotes, I authorize HVAC Wisdom and HVAC companies, their contractors and partner companies to contact me about HVAC offers by phone calls, emails and text messages to the number and email address I provided even if my telephone number is a mobile number that is currently listed on any state, federal or corporate Do Not Call list. I authorize that these marketing communications may be delivered to me using an automatic telephone dialing system or by prerecorded message. I understand that my consent is not a condition of purchase of any goods or services and that I may revoke my consent at any time. I understand that standard message and data rates may apply. <a href="https://www.roofingwisdom4.com/CCPA.html">Do Not Call/California Notice.</a></span>
+        </div>
+        <div class="question">
+            <h3>What’s the nature of your request?</h3>
+            <h4>Tell us what kind of help you need</h4>
+            <div class="wrap">
+                <label class="radio">Install/Replace
+                    <input type="radio" name="service" value="Install" id="HVACService">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio">Repair
+                    <input type="radio" name="service" value="Repair" id="HVACService">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="question">
+            <h3>What type of system are we working with?</h3>
+            <h4>Select the equipment that needs attention</h4>
+            <div class="wrap">
+                <label class="radio">Central Heating / Furnace
+                    <input type="radio" name="system" id="HVACSystem" value="Central Heating">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio">Boiler / Radiator
+                    <input type="radio" name="system" id="HVACSystem" value="Boiler">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radio">Air Conditioner
+                    <input type="radio" name="system" id="HVACSystem" value="Conditioner">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="question">
+            <h3>What powers your system?</h3>
+            <h4>Choose the fuel or energy source it runs on</h4>
+            <div class="wrap">
+                <button class="option" type="button" onclick="updatePower('Natural Gas')">Natural Gas</button>
+                <button class="option active" type="button" onclick="updatePower('Oil')">Oil</button>
+                <button class="option" type="button" onclick="updatePower('Propane')">Propane Gas</button>
+                <button class="option" type="button" onclick="updatePower('Electric')">Electric</button>
+                <input type="hidden" name="HVACPower" id="HVACPower">
+            </div>
+        </div>
+        <div class="question">
+            <h3>We have matching pros in your area!</h3>
+            <h4>Up to 4 local contractors will reach out with their best prices.</h4>
+            <div class="wrap">
+                <div class="field">
+                    <i class="error">Please enter your first name</i>
+                    <input type="text" name="first" id="first" placeholder="First Name">
+                </div>
+                <div class="field">
+                    <i class="error">Please enter your last name</i>
+                    <input type="text" name="last" id="last" placeholder="Last Name">
+                </div>
+                <div class="field">
+                    <i class="error">Please enter a valid mobile phone number</i>
+                    <input type="tel" name="phone" id="phone" placeholder="Mobile Phone">
+                </div>
+                <div class="field">
+                    <i class="error">Please enter a valid email address</i>
+                    <input type="email" name="email" id="email" placeholder="Email Address">
+                </div>
+                <button class="big" id="submit">Send</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="https://kit.fontawesome.com/4c9962e02c.js" crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoXbzHf_y74k7Y1tXWLqzxcaBj7yhThAY&libraries=places&callback=Function.prototype"></script>
+<script type="text/javascript" src="https://smshelperstorage.blob.core.windows.net/landingfiles/wp/wp-hvac-scripts.js" crossorigin="anonymous"></script>
+<script>
+    const steps = document.querySelectorAll('.question');
+    const stepsContainer = document.querySelector('.steps');
+    let currentStep = 0;
+
+    function updateStep() {
+        stepsContainer.style.transform = `translateX(-${currentStep * 100}%)`;
+    }
+
+    updateStep();
+
+    document.querySelector('.next')?.addEventListener('click', () => {
+        if (currentStep < steps.length - 1) {
+            currentStep++;
+            updateStep();
+        }
+    });
+
+    document.querySelector('.back')?.addEventListener('click', () => {
+        if (currentStep > 0) {
+            currentStep--;
+            updateStep();
+        }
+    });
+
+    document.querySelector('form')?.addEventListener('click', (e) => {
+        if (
+            e.target.classList.contains('address') ||
+            e.target.classList.contains('radio') ||
+            e.target.classList.contains('option')
+        ) {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                updateStep();
+            }
+        }
+    });
+
+    const options = document.querySelectorAll('.wrap .option');
+
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+            options.forEach(btn => btn.classList.remove('active'));
+            option.classList.add('active');
+        });
+    });
+
+    function updatePower(value) {
+        document.getElementById('HVACPower').value = value;
+    }
+
+    const fields = [
+        {
+            input: document.getElementById('first'),
+            validate: v => /^[A-Za-z\s]+$/.test(v.trim()),
+        },
+        {
+            input: document.getElementById('last'),
+            validate: v => /^[A-Za-z\s]+$/.test(v.trim()),
+        },
+        {
+            input: document.getElementById('phone'),
+            validate: v => v.replace(/\D/g, '').length === 10,
+        },
+        {
+            input: document.getElementById('email'),
+            validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+        }
+    ];
+
+    fields.forEach(f => {
+        f.input.addEventListener('input', () => {
+            toggleFieldState(f.input, f.validate(f.input.value));
+        });
+    });
+
+    document.getElementById('submit').addEventListener('click', e => {
+        e.preventDefault();
+        fields.forEach(f => {
+            toggleFieldState(f.input, f.validate(f.input.value));
+        });
+    });
+
+    function toggleFieldState(input, valid) {
+        input.closest('.field').classList.toggle('wrong', !valid);
+    }
+</script>
+
+</html>
